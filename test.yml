@@ -1,0 +1,26 @@
+---
+ - name: git add commit and push
+   hosts: localhost
+   tasks:
+         - set_fact: 
+             git_message: "Automate Release update"
+
+         - name: git init
+           shell: "cd /src/ansible-examples/mm"
+           register: init
+         - debug: var=init.stdout_lines
+
+         - name: git add
+           shell: "git add ."
+           register: add
+         - debug: msg="git added folder is {{ init }}"
+           
+         - name: git commit
+           shell: "git commit -m 'this is forst commit'"
+           register: commit
+         - debug: msg="git commited is {{ commit.stdout_lines }}"
+
+         - name: git status
+           shell: "git status"
+           register: status
+         - debug: msg="the git status is {{ status.stdout_lines }}"
