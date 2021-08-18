@@ -4,9 +4,11 @@
    tasks:
          - set_fact: 
              git_message: "Automate Release update"
-
+         
+         - name: changing chmod
+           shell: "chmod 777 /home/mikki/mm/mit/AFT"
          - name: git init
-           shell: "cd /src/ansible-examples/mm"
+           shell: "/home/mikki/mm/mit/AFT/MAFT"
            register: init
          - debug: var=init.stdout_lines
 
@@ -16,7 +18,7 @@
          - debug: msg="git added folder is {{ init }}"
            
          - name: git commit
-           shell: "git commit -m 'this is forst commit'"
+           shell: "git commit -m 'this is commiting testing'"
            register: commit
          - debug: msg="git commited is {{ commit.stdout_lines }}"
 
